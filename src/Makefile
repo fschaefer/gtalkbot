@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -g -Wall
-INCLUDE = -I../libstrophe
+CFLAGS = -g -Wall -std=c99
+INCLUDE = -I.. -I../libstrophe
 LIBS = -lssl -lresolv ../libstrophe/libstrophe.a ../libstrophe/libexpat.a 
 
 gtalkbot:handler.o settings.o log.o plugin.o main.c

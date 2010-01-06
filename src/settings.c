@@ -1,5 +1,4 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: t; c-basic-offset: 4 -*- */
-
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,8 +10,6 @@
 typedef struct settings {
 	char user[1024];
 	char pass[1024];
-	int plugin_cnt;
-	
 } Settings;
 
 
@@ -21,9 +18,8 @@ static Settings s;
 static void
 init_settings() {
 	static int inited = 0;
-	char buf[2048];
 	FILE * xmpp_conf;
-	FILE * plugins_conf;
+	char buf[2048];
 	
 	if (inited) return;
 
@@ -49,22 +45,6 @@ init_settings() {
 	bot_debug("username: %s", s.user);
 	bot_debug("password: %s", s.pass);
 
-	/* 插件配置 */
-	plugins_conf = fopen(PLUGIN_CONF, "r");
-	while (fgets(buf, sizeof(buf), plugins_conf)) {
-		char *tmp;
-		tmp = strchr(buf, '#');
-		if (tmp) *tmp = '\0';
-		tmp = buf;
-		while (isblank(*tmp)) tmp++;
-		if (!strncasecmp(tmp, "plugins", 6)) {
-			char *str = strtok(tmp, "\"");
-			str = strtok(NULL, "\"");
-		}
-	}
-	
-
-	
 	inited = 1;
 	return;
 }

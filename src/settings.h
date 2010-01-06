@@ -1,13 +1,7 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: t; c-basic-offset: 4 -*- */
 #ifndef _SETTINGS_H_
 #define _SETTINGS_H_
-
-#define BOT_VERSION "0.1"
-
-#define CONF_DIR	"etc"
-
-#define PLUGIN_CONF	CONF_DIR"/plugins.conf"
-#define XMPP_CONF	CONF_DIR"/xmpp.conf"
+#include "config.h"
 
 /* 获取 */
 const char	*bot_get_username();

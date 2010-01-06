@@ -82,14 +82,12 @@ bot_msg_handler(xmpp_conn_t * const conn, xmpp_stanza_t * const stanza, void * c
 	/* 设置回复内容 */
 	body = xmpp_stanza_new(ctx);
 	xmpp_stanza_set_name(body, "body");
-	/* 判断命令是否有插件支持 */
+
+	/* 分隔命令与参数，并运行 */
 	command = strtok(intext, " \t");
-	if (bot_get_plugin(command) < 0) {	/* 不支持该命令，列出所有支持的命令 */
-		replytext = strdup("command not support!\n");
-	} else {							/* 尝试运行 */
-		args = strtok(NULL, ";\n");
-		replytext = (char *)bot_run_plugin(command, args);
-	}
+	args = strtok(NULL, ";\n");
+	/* 尝试运行并获取结果 */
+	replytext = (char *)bot_run_plugin(command, args);
 	
 	text = xmpp_stanza_new(ctx);
 	xmpp_stanza_set_text(text, replytext);
