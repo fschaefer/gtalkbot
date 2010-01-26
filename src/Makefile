@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -std=c99
+CFLAGS = -g -Wall -m32 -std=c99
 INCLUDE = -I.. -I../libstrophe
 LIBS = -lssl -lresolv ../libstrophe/libstrophe.a ../libstrophe/libexpat.a 
 

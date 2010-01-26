@@ -7,7 +7,6 @@
 #include "handler.h"
 #include "settings.h"
 
-
 int main(int argc, char *argv[])
 {
 	xmpp_ctx_t *ctx;
